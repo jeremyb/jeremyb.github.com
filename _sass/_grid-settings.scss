@@ -1,0 +1,27 @@
+@import "vendor/neat/neat";
+@import "vendor/neat/neat-helpers";
+
+// Change the grid settings
+$visual_grid: false;
+$max-width: em(960);
+
+// Define your breakpoints
+$medium: new-breakpoint(min-width em(768) 12);
+$large: new-breakpoint(min-width em(1000) 12);
+
+.row {
+    text-align: left;
+    @include outer-container;
+    .span1 { @include span-columns(1); }
+    .span2 { @include span-columns(2); }
+    .span3 { @include span-columns(3); }
+    .span4 { @include span-columns(4); }
+    .span5 { @include span-columns(5); }
+    .span6 { @include span-columns(6); }
+    .span7 { @include span-columns(7); }
+    .span8 { @include span-columns(8); }
+    .span9 { @include span-columns(9); }
+    .span10 { @include span-columns(10); }
+    .span11 { @include span-columns(11); }
+    .span12 { @include span-columns(12); }
+}

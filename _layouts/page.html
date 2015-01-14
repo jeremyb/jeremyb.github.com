@@ -1,0 +1,27 @@
+---
+layout: default
+---
+
+<article class="entry">
+    {% if page.image.feature %}
+    <div class="entry-feature-image" style="background-image: url(/images/{{ page.image.feature }});">
+        {% if page.image.credit %}
+            <p class="image-credit">Photo Credit: <a href="{{ page.image.creditlink }}">{{ page.image.credit }}</a></p>
+        {% endif %}
+    </div>
+    {% endif %}
+    <div class="entry-wrapper">
+        {% if page.title or page.headline %}
+        <header class="entry-header">
+            <h1 class="entry-title">
+                {% if page.link %}<a href="{{ page.link }}">{% endif %}
+                {% if page.headline %}{{ page.headline }}{% else %}{{ page.title }}{% endif %}
+                {% if page.link %}<span class="link-arrow">&rarr;</span></a>{% endif %}
+            </h1>
+        </header>
+        {% endif %}
+        <div class="entry-content">
+            {{ content }}
+        </div>
+    </div>
+</article>

@@ -1,0 +1,68 @@
+---
+layout: default
+---
+
+<article class="entry">
+    {% if page.image.feature %}
+    <div class="entry-feature-image" style="background-image: url(/images/{{ page.image.feature }});">
+        {% if page.image.credit %}
+        <p class="image-credit">Photo Credit: <a href="{{ page.image.creditlink }}">{{ page.image.credit }}</a></p>
+        {% endif %}
+    </div>
+    {% endif %}
+    <div class="entry-wrapper">
+        <header class="entry-header">
+            {% if page.date %}
+            <p class="entry-date date published">
+                <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
+            </p >
+            {% endif %}
+
+            <h1 class="entry-title">
+                {% if page.link %}<a href="{{ page.link }}">{% endif %}
+                {% if page.headline %}{{ page.headline }}{% else %}{{ page.title }}{% endif %}
+                {% if page.link %}<span class="link-arrow">&rarr;</span></a>{% endif %}
+            </h1>
+        </header>
+        <div class="entry-content">
+            {{ content }}
+        </div>
+        <footer>
+            {% if page.tags %}
+            <div class="entry-tags">
+                {% for tag in page.tags %}
+                    <a href="/tags/#{{ tag }}" title="Pages tagged {{ tag }}">{{ tag }}</a>
+                    {% unless forloop.last %}&nbsp;&bull;&nbsp;{% endunless %}
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if page.share %}
+            <div class="social-share">
+                <span class="social-share-twitter">
+                    <a href="https://twitter.com/intent/tweet?hashtags={{ page.tags | join: ',' | remove: ' ' }}&amp;text={{ page.title | escape | replace:' ','%20' }}&amp;url={{ site.url }}{{ page.url }}{% if author.twitter %}&amp;via={{ author.twitter }}{% endif %}" title="Share on Twitter" itemprop="Twitter">
+                        <i class="icon-twitter"></i>
+                        Tweet
+                    </a>
+                </span>
+                <span class="social-share-facebook">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}" title="Share on Facebook" itemprop="Facebook">
+                        <i class="icon-facebook"></i>
+                        Like
+                    </a>
+                </span>
+                <span class="social-share-googleplus">
+                    <a href="https://plus.google.com/share?url={{ site.url }}{{ page.url }}" title="Share on Google Plus" itemprop="GooglePlus">
+                        <i class="icon-google-plus"></i>
+                        +1
+                    </a>
+                </span>
+            </div>
+            {% endif %}
+        </footer>
+        
+        {% if page.comments and site.disqus_shortname %}
+        <div id="disqus_thread"></div>
+        {% endif %}
+    </div>
+</article>

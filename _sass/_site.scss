@@ -1,0 +1,357 @@
+// Selection
+// --------------------------------------------------
+
+::-moz-selection { 
+	background-color: lighten($base-color, 65%); 
+	color: $base-color; 
+	text-shadow: none; 
+}  	
+::selection { 
+	background-color: lighten($base-color, 65%); 
+	color: $base-color; 
+	text-shadow: none; 
+}
+
+
+// Body
+// --------------------------------------------------
+
+body {
+	font-family: $base-font;
+	color: $text-color;
+}
+
+
+// TYPOGRAPHY
+// --------------------------------------------------
+
+body {
+	font-family: $base-font;
+	color: $text-color;
+	@include font-size(16);
+}
+
+p {
+	@include font-size($font-size,yes,28);
+}
+
+li {
+	@include font-size($font-size,12,24);
+}
+
+// Headings
+h1, h2, h3, h4, h5, h6 {
+	font-family: $heading-font;
+	text-rendering: optimizeLegibility; // Fix the character spacing for headings
+}
+h1 {
+	@include font-size(36);
+}
+h2 {
+	@include font-size(32);
+}
+h3 {
+	@include font-size(28);
+}
+h4 {
+	@include font-size(24);
+}
+h5 {
+	@include font-size(20);
+}
+h6 {
+	@include font-size(18);
+}
+
+u,
+ins {
+	text-decoration: none;
+	border-bottom: 1px solid $text-color;
+}
+
+
+// Tables
+table {
+	border-collapse: collapse;
+	margin: ((0px + $doc-line-height) / 2) 0;
+	margin: ((0rem + ($doc-line-height / $doc-font-size)) / 2) 0;
+	width: 100%;
+}
+tbody {
+	tr:hover > td, tr:hover > th {
+		background-color: $table-hover-color;
+	}
+}
+thead {
+	tr:first-child td {
+		border-bottom: 2px solid $table-border-color;
+	}
+}
+th {
+	padding: (0px + $doc-line-height) / 2;
+	padding: (0rem + ($doc-line-height / $doc-font-size)) / 2;
+	font-family: $alt-font;
+	font-weight: bold;
+	text-align: left;
+	background-color: $table-header-color;
+	border-bottom: 1px solid darken($border-color, 15%);
+}
+td {
+	border-bottom: 1px solid $border-color;
+	padding: (0px + $doc-line-height) / 2;
+	padding: (0rem + ($doc-line-height / $doc-font-size)) / 2;
+	@include font-size(18);
+}
+tr, td, th {
+	vertical-align: middle;
+}
+
+
+// Links
+// --------------------------------------------------
+
+a { 
+	text-decoration: none;
+	color: $link-color; 
+	&:hover {
+		color: darken($link-color, 20); 
+	}
+	&:focus { 
+		outline: thin dotted; 
+		color: darken($link-color, 20);
+	}
+	&:hover, 
+	&:active { 
+		outline: 0; 
+	}
+}
+
+.link-arrow {
+	font-weight: 100;
+	text-decoration: underline;
+	font-style: normal;
+}
+
+
+// Figures
+// --------------------------------------------------
+
+figcaption {
+	padding-top: 10px;
+	@include font-size(14);
+	line-height: 1.3;
+	color: lighten($text-color, 10);
+}
+
+
+// Feature Image Caption
+// --------------------------------------------------
+
+.image-credit {
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+    color: white;
+	padding-right: 20px;
+	text-align: right;
+	@include font-size(14,no);
+	line-height: 1.3;
+	a {
+		color: white;
+	}
+}
+
+
+// Note text
+// --------------------------------------------------
+
+.notice {
+	margin-top: 1.5em;
+	padding: .5em 1em;
+	text-indent: 0;
+	@include font-size(16);
+	background-color: lighten($black, 95);
+	border: 1px solid lighten($black, 90);
+	@include rounded(4px);
+}
+
+
+// Blockquotes
+// --------------------------------------------------
+
+blockquote {
+	font-family: $alt-font;
+	font-style: italic;
+	@include font-size(16);
+	padding-left: 20px;
+	border-left: 8px solid $black;
+}
+
+
+// Footnotes
+// --------------------------------------------------
+
+.footnotes {
+	@include font-size(14);
+	font-family: $base-font;
+}
+
+
+// Code
+// --------------------------------------------------
+
+tt, code, kbd, samp, pre {
+	font-family: $code-font;
+}
+p,
+li { 
+	code {
+		@include font-size(14);
+		font-family: $code-font;
+		white-space: nowrap;
+		margin: 0 2px;
+		padding: 0 5px;
+		border: 1px solid lighten($black, 90);
+		background-color: lighten($black, 95);
+		@include rounded(3px);
+	}
+}
+pre {
+	@include font-size(14);
+	overflow-x: auto;
+}
+
+
+// Utility Classes
+// --------------------------------------------------
+
+.wrap {
+	margin: 0 auto;
+}
+.all-caps {
+	text-transform: uppercase;
+}
+.pull-left {
+	float: left;
+	padding-right: $gutter;
+}
+.pull-right {
+	float: right;
+	padding-left: $gutter;
+}
+.unstyled-list {
+	list-style: none;
+	margin: 0 0 0 1rem;
+	padding: 0;
+	li {
+		list-style-type: none;
+	}
+}
+.no-scroll {
+	overflow: hidden;
+}
+.center{
+	text-align: center;
+}
+
+.image-left {
+  	float: left;
+  	margin-right: $gutter;
+  	margin-bottom: $gutter;
+}
+.image-right {
+	float: right;
+	margin-left: $gutter;
+	margin-bottom: $gutter;
+}
+.overview {
+    font-size: 1.2em;
+}
+
+
+// Alert
+// ---------------------------------------------------
+
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.alert h4 {
+  margin-top: 0;
+  color: inherit;
+}
+.alert > p,
+.alert > ul {
+  margin-bottom: 0;
+}
+.alert > p + p {
+  margin-top: 5px;
+}
+.alert-success {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+.alert-success hr {
+  border-top-color: #c9e2b3;
+}
+.alert-info {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+.alert-info hr {
+  border-top-color: #a6e1ec;
+}
+.alert-warning {
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+}
+.alert-warning hr {
+  border-top-color: #f7e1b5;
+}
+.alert-danger {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+.alert-danger hr {
+  border-top-color: #e4b9c0;
+}
+
+
+// Global Transition
+// ---------------------------------------------------
+
+b, i, strong, em, blockquote, p, q, span, figure, img, h1, h2, header, input, a, .highlight {
+	@include transition(all .2s ease);
+}
+
+
+// Skill
+// ---------------------------------------------------
+
+.skill { position: relative; }
+.skill h4 { line-height:22px; margin-bottom:10px; }
+.skill p { text-align:right; color:#aaa; margin-bottom:0; }
+
+.level { background-color:#e2e2e2; height:5px; width:100%; margin:5px 0;  -webkit-border-radius:5px; border-radius:5px; }
+.l-1 { width:10%; display:block; background-color:#359CBD; height:5px; -webkit-border-radius:5px 0 0 5px; border-radius:5px 0 0 5px; }
+.l-2 { width:20%; display:block; background-color:#359CBD; height:5px; -webkit-border-radius:5px 0 0 5px; border-radius:5px 0 0 5px; }
+.l-3 { width:30%; display:block; background-color:#359CBD; height:5px; -webkit-border-radius:5px 0 0 5px; border-radius:5px 0 0 5px; }
+.l-4 { width:40%; display:block; background-color:#359CBD; height:5px; -webkit-border-radius:5px 0 0 5px; border-radius:5px 0 0 5px; }
+.l-5 { width:50%; display:block; background-color:#359CBD; height:5px; -webkit-border-radius:5px 0 0 5px; border-radius:5px 0 0 5px; }
+.l-6 { width:60%; display:block; background-color:#359CBD; height:5px; -webkit-border-radius:5px 0 0 5px; border-radius:5px 0 0 5px; }
+.l-7 { width:70%; display:block; background-color:#359CBD; height:5px; -webkit-border-radius:5px 0 0 5px; border-radius:5px 0 0 5px; }
+.l-8 { width:80%; display:block; background-color:#359CBD; height:5px; -webkit-border-radius:5px 0 0 5px; border-radius:5px 0 0 5px; }
+.l-9 { width:90%; display:block; background-color:#359CBD; height:5px; -webkit-border-radius:5px 0 0 5px; border-radius:5px 0 0 5px; }
+.l-10 { width:100%; display:block; background-color:#359CBD; height:5px; -webkit-border-radius:5px; border-radius:5px; }
+
+.skill .certified {
+    position: absolute;
+    right: 0;
+    bottom: 13px;
+}

@@ -1,0 +1,41 @@
+---
+layout: page
+image:
+  feature: slides/default.jpg
+---
+
+<div id="home">
+    <p class="overview">
+        Bienvenue sur mon site, je suis développeur Web, expert sur le framework
+        Symfony2 et formateur pour la société Lexik à Montpellier. Je suis
+        particulièrement intéressé par les frameworks modernes mettant en avant
+        les bonnes pratiques de code. Vous trouverez sur ce site quelques
+        articles autour de ces sujets.
+    </p>
+
+    <ul class="post-list">
+    {% for post in site.posts limit:5 %}
+        <li>
+            <article>
+                <span class="entry-date">
+                    <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
+                </span>
+                <h3 class="entry-title">
+                    <a href="{{ post.url }}" class="entry-title">
+                        {{ post.title }}
+                    </a>
+                </h3>
+                <p>
+                    {{ post.excerpt | remove: '<p>' | remove: '</p>' }}
+                </p>
+            </article>
+        </li>
+    {% endfor %}
+    </ul>
+
+    <div class="navigation">
+        <a class="btn" href="/blog">
+            Voir tous les articles
+        </a>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+# Site wide configuration
+title: Jeremy Barthe
+description: Jeremy Barthe, développeur Symfony à Montpellier
+url: http://jeremybarthe.com
+locale: fr
+
+# Jekyll configuration
+permalink:   pretty
+paginate:    5
+markdown:    kramdown
+highlighter: pygments
+sass:
+  sass_dir: _sass
+  style: compressed
+
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..2
+  use_coderay: false
+
+exclude: ["README.md"]
+
+google_analytics: UA-83859-1
+disqus_shortname: jeremybarthe
+
+# Site owner
+owner:
+  name:    Jeremy Barthe
+  avatar:  /images/avatar.jpg
+  email:   contact@jeremybarthe.com
+  url:     http://jeremybarthe.com
+  twitter: jeremyb_
