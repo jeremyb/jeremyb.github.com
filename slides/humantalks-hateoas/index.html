@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Introduction à HATEOAS</title>
+
+        <meta name="description" content="Introduction à HATEOAS">
+        <meta name="author" content="Jeremy Barthe">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.min.css">
+        <link rel="stylesheet" href="css/theme/solarized.css" id="theme">
+
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <link rel="stylesheet" href="lib/foundation_icons_general_enclosed/stylesheets/general_enclosed_foundicons.css">
+
+        <link rel="stylesheet" href="css/onepcssgrid.css">
+
+        <style type="text/css">
+            .reveal h1,
+            .reveal h2,
+            .reveal h3,
+            .reveal h4,
+            .reveal h5,
+            .reveal h6 {
+              text-transform: none;
+            }
+
+            .reveal h3,
+            .reveal h4,
+            .reveal h5,
+            .reveal h6 {
+                margin: 0 0 10px 0;
+            }
+
+            .reveal dl { text-align: left; }
+            .reveal dt { font-weight: bold; }
+            .reveal dd { margin-left: 2em; }
+
+            /* global foundicon styles */
+            .reveal [class*="foundicon-"] {
+                font-size: 1.1em;
+            }
+        </style>
+
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script>
+            document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <div class="slides">
+
+                <section>
+                    <h1>
+                        Introduction à<br />
+                        HATEOAS
+                    </h1>
+
+                    <p>
+                        <small>Human Talks Montpellier - Mai 2013</small>
+                    </p>
+                </section>
+
+                <section>
+                    <h2>Jérémy Barthe</h2>
+
+                    <br />
+                    <div class="onerow">
+                        <div class="col6">
+                            <h4>Web developer</h4>
+                            <ul>
+                                <li>PHP / Symfony2</li>
+                                <li>Javascript</li>
+                                <li><a href="https://twitter.com/jeremyb_">@jeremyb_</a></li>
+                                <li><a href="https://github.com/jeremyb">github.com/jeremyb</a></li>
+                            </ul>
+                        </div>
+                        <div class="col6">
+                            <h4>Lexik</h4>
+                            <ul>
+                                <li><a href="http://www.lexik.fr">lexik.fr</a></li>
+                                <li><a href="https://github.com/lexik">github.com/lexik</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h1>
+                        HATEOAS<br />
+                        <small>késako ??!!</small>
+                    </h1>
+
+                    <p>
+                        Pour commencer on va parler d'<strong>API</strong><br />
+                        et plus précisemment d'<strong>API REST</strong> !
+                    </p>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>REST (REpresentational State Transfer)</h2>
+
+                        <p>
+                            est un <strong>style d’architecture pour les systèmes hypermédia distribués</strong>.
+                            <br />
+                            <small>Ce style d'architecture est particulièrement bien adapté au World Wide Web...</small>
+                            <br />
+                            <small>
+                                Source :
+                                <a href="https://fr.wikipedia.org/wiki/Representational_State_Transfer">
+                                    wikipédia
+                                </a>
+                            </small>
+                        </p>
+
+                        <p>Pour résumer, une <strong>API REST expose une collection de ressources</strong> et permet d'agir dessus.</p>
+
+                        <p><i class="foundicon-down-arrow"></i></p>
+                    </section>
+
+                    <section>
+                        <h2>Les 3 étapes vers REST</h2>
+
+                        <dl>
+                            <dt>Level 0</dt>
+                            <dd>
+                                <ul>
+                                    <li>Communication client / serveur via le protocole HTTP</li>
+                                    <li>1 URL / 1 type de verbe HTTP (en général POST)</li>
+                                </ul>
+                            </dd>
+                            <dt>Level 1: Resources</dt>
+                            <dd>
+                                <ul>
+                                    <li>Plusieurs URLs / orientées ressources</li>
+                                    <li>toujours 1 seul verbe HTTP (en général POST)</li>
+                                </ul>
+                            </dd>
+                            <dt>Level 2: HTTP Verbs</dt>
+                            <dd>
+                                <ul>
+                                    <li>Verbe HTTP (GET, POST, PUT, DELETE)</li>
+                                    <li>Status code HTTP</li>
+                                </ul>
+                            </dd>
+                            <dt>Level 3: Hypermedia Controls</dt>
+                            <dd>
+                                <ul>
+                                    <li>autrement appelé HATEOAS, mais patience...</li>
+                                </ul>
+                            </dd>
+                        </dl>
+                        <br />
+
+                        <p>
+                            Source :
+                            <a href="http://martinfowler.com/articles/richardsonMaturityModel.html">
+                                Richardson Maturity Model
+                            </a>
+                        </p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Cas pratique</h2>
+
+                        <p>
+                            <strong>création d'une API REST pour le site des Human Talks</strong><br />
+                            <small>Contexte : API publique</small>
+                        </p>
+
+                        <p><i class="foundicon-down-arrow"></i></p>
+                    </section>
+                    <section>
+                        <h2>Description de l'API</h2>
+
+                        <dl>
+                            <dt>GET: /events.(xml|json)</dt>
+                            <dd><small>Liste tous les événements</small></dd>
+                            <dt>GET: /cities/montpellier/events.(xml|json)</dt>
+                            <dd><small>Liste les événements de Montpellier</small></dd>
+                            <dt>GET: /cities/montpellier/events/31.(xml|json)</dt>
+                            <dd><small>Affiche les détails de l'événement 31 de Montpellier</small></dd>
+                        </dl>
+
+                        <dl class="fragment">
+                            <dt>GET: /talks.(xml|json)</dt>
+                            <dd><small>Affiche tous les talks</small></dd>
+                            <dt>GET: /events/31/talks.(xml|json)</dt>
+                            <dd><small>Affiche les talks de l'événement 31</small></dd>
+                            <dt>POST: /talks.(xml|json)</dt>
+                            <dd><small>Proposer un talk</small></dd>
+                        </dl>
+
+                        <p><i class="foundicon-down-arrow"></i></p>
+                    </section>
+
+                    <section>
+                        <h5>GET: /events.xml</h5>
+
+                        <pre><code>
+HTTP/1.1 200 OK
+Content-Type: text/xml; charset=utf-8
+
+&lt;?xml version="1.0" encoding="utf-8" ?>
+&lt;events>
+    &lt;event>
+        &lt;id>29&lt;/id>
+        &lt;city>Paris&lt;/city>
+        &lt;date>2013-04-09T19:00:00Z&lt;/date>
+    &lt;/event>
+    ...
+    &lt;event>
+        &lt;id>1&lt;/id>
+        &lt;city>Montpellier&lt;/city>
+        &lt;date>2012-07-10T19:00:00Z&lt;/date>
+    &lt;/event>
+&lt;/events>
+                        </code></pre>
+
+                        <p><i class="foundicon-down-arrow"></i></p>
+                    </section>
+
+                    <section>
+                        <h5>GET: /events/1/talks.xml</h5>
+
+                        <pre><code>
+HTTP/1.1 200 OK
+Content-Type: text/xml; charset=utf-8
+
+&lt;?xml version="1.0" encoding="utf-8" ?>
+&lt;talks>
+    &lt;talk>
+        &lt;id>1&lt;/id>
+        &lt;event>1&lt;/event>
+        &lt;title>Impress(.js) everybody !&lt;/title>
+        &lt;speaker>Julien Bordellier&lt;/speaker>
+        &lt;description>Présentation et introduction à Impress.js (en impress.js)&lt;/description>
+        &lt;slides>http://perso.epitech.eu/~bordel_j/humantalks/&lt;/slides>
+    &lt;/talk>
+    ...
+    &lt;talk>
+        &lt;id>4&lt;/id>
+        &lt;event>1&lt;/event>
+        &lt;title>Pourquoi choisir le framework AngularJS&lt;/title>
+        &lt;speaker>Thierry Chatel&lt;/speaker>
+        &lt;description>Un aperçu rapide des principaux atouts du framework JavaScript AngularJS...&lt;/description>
+        &lt;slides>http://www.methotic.com/ressources/20120710-humantalk-angularjs/&lt;/slides>
+    &lt;/talk>
+&lt;/talks>
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>
+                            Constat : notre API n'est pas RESTful
+                        </h2>
+
+                        <p>
+                            car nous ne respectons pas le <strong>niveau 3</strong> :<br />
+                            <strong>Hypermedia Controls</strong>
+                        </p>
+
+                        <p><i class="foundicon-down-arrow"></i></p>
+                    </section>
+
+                    <section>
+                        <h2>
+                            HATEOAS<br />
+                            <small>Hypermedia As the Engine Of Application State</small>
+                        </h2>
+
+                        <p>
+                            Expose en plus de l'état, les <strong>actions / transitions possibles
+                            autour de l'objet au travers de liens hypermédias.</strong>
+                        </p>
+                        <p>
+                            Navigation dynamique dans l'API en fonction de l'état de chaque ressource affichée.
+                        </p>
+
+                        <br />
+
+                        <p><strong>Les plus :</strong></p>
+                        <ul>
+                            <li>implémentation découplée</li>
+                            <li>plus besoin de manipuler les URLs</li>
+                            <li>forme d'auto-documentation de l’API</li>
+                        </ul>
+
+                        <p><i class="foundicon-down-arrow"></i></p>
+                    </section>
+
+                    <section>
+                        <h5>GET: /events.xml</h5>
+                        <pre><code>
+HTTP/1.1 200 OK
+Content-Type: text/xml; charset=utf-8
+
+&lt;?xml version="1.0" encoding="utf-8" ?>
+&lt;events>
+    &lt;event>
+        &lt;id>29&lt;/id>
+        &lt;city>Paris&lt;/city>
+        &lt;date>2013-04-09T19:00:00Z&lt;/date>
+        &lt;link rel="self"  href="/events.xml" />
+        &lt;link rel="city"  href="/cities/paris/events.xml" />
+        &lt;link rel="event" href="/cities/paris/events/29.xml" />
+        &lt;link rel="talks" href="/events/29/talks.xml" />
+    &lt;/event>
+    ...
+&lt;/events>
+                        </code></pre>
+
+                        <p><i class="foundicon-down-arrow"></i></p>
+                    </section>
+
+                    <section>
+                        <h5>GET: /events/1/talks.xml</h5>
+                        <pre><code>
+HTTP/1.1 200 OK
+Content-Type: text/xml; charset=utf-8
+
+&lt;?xml version="1.0" encoding="utf-8" ?>
+&lt;talks>
+    &lt;talk>
+        &lt;id>4&lt;/id>
+        &lt;event>1&lt;/event>
+        &lt;title>Pourquoi choisir le framework AngularJS&lt;/title>
+        &lt;speaker>Thierry Chatel&lt;/speaker>
+        &lt;description>...&lt;/description>
+        &lt;slides>...&lt;/slides>
+        &lt;link rel="self"   href="/events/1/talks.xml" />
+        &lt;link rel="event"  href="/cities/montpellier/events/1.xml" />
+        &lt;link rel="talks"  href="/events/1/talks.xml" />
+        &lt;link rel="city"   href="/cities/montpellier/events.xml" />
+        &lt;link rel="slides" href="http://www.methotic.com/..." />
+    &lt;/talk>
+    ...
+&lt;/talks>
+                        </code></pre>
+
+                        <p><i class="foundicon-down-arrow"></i></p>
+                    </section>
+
+                    <section>
+                        <h2>Et une homepage !</h2>
+                        <h5>GET: /index.xml</h5>
+                        <pre><code>
+HTTP/1.1 200 OK
+Content-Type: text/xml; charset=utf-8
+
+&lt;?xml version="1.0" encoding="utf-8" ?>
+&lt;links>
+    &lt;link rel="events" href="/events.xml" />
+    &lt;link rel="talks"  href="/talks.xml" />
+    &lt;cities>
+        &lt;link rel="montpellier" href="/cities/montpellier/events.xml" />
+        &lt;link rel="paris"       href="/cities/paris/events.xml" />
+    &lt;/cities>
+&lt;/links>
+                        </code></pre>
+                    </section>
+
+                </section>
+
+                <section>
+                    <section>
+                        <h2>
+                            On n'a parlé d'API...<br />
+                            mais toujours pas de JSON ?!
+                        </h2>
+
+                        <p class="fragment">
+                            <strong>Problème :</strong> aucun standard pour afficher des hypermédias.
+                        </p>
+
+                        <div class="fragment">
+                            <p>ou plus exactement plein de formats :</p>
+                            <ul>
+                                <li>
+                                    <a href="http://www.amundsen.com/media-types/collection/">
+                                        Collection+JSON - Hypermedia Type
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://stateless.co/hal_specification.html">
+                                        HAL - Hypertext Application Language
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://json-ld.org/">
+                                        JSON for Linking Data
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://github.com/kevinswiber/siren">
+                                        Siren
+                                    </a>
+                                </li>
+                            </ul>
+                            <p>qui pour un 5ème ? ;-)</p>
+                        </div>
+
+                        <p><i class="foundicon-down-arrow"></i></p>
+                    </section>
+
+                    <section>
+                        <h2>Exemple Collection+JSON</h2>
+                        <pre><code>
+{ "collection" :
+    {
+        "version" : "1.0",
+        "href" : "http://example.org/friends/",
+
+        "links" : [
+            {"rel" : "feed", "href" : "http://example.org/friends/rss"},
+            {"rel" : "queries", "href" : "http://example.org/friends/?queries"},
+            {"rel" : "template", "href" : "http://example.org/friends/?template"}
+        ]
+    }
+}
+                        </code></pre>
+
+                        <p><i class="foundicon-down-arrow"></i></p>
+                    </section>
+
+                    <section>
+                        <h2>Exemple HAL</h2>
+                        <pre><code>
+{
+    "_links": {
+        "self": { "href": "/orders" },
+        "next": { "href": "/orders?page=2" },
+        "find": { "href": "/orders{?id}", "templated": true },
+        "admin": [
+            { "href": "/admins/2", "title": "Fred" },
+            { "href": "/admins/5", "title": "Kate" }
+        ]
+    }
+}
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h1>Conclusion</h1>
+                        <p><small>quelques problèmes</small></p>
+
+                        <ul>
+                            <li>naviguer dans une API comme un client pose un problème d'accés aux ressources en un minimum de click ;</li>
+                            <li>les hypermédias alourdissent un peu la réponse <small>(peut être problématique dans le contexte d'une application mobile) ;</small></li>
+                            <li>HATEOAS ou hypermedia API repose autour d'un concept mais de nombreuses implémentations sont possibles...</li>
+                        </ul>
+
+                        <p><i class="foundicon-down-arrow"></i></p>
+                    </section>
+                    <section>
+                        <p>mais surtout...</p>
+                        <blockquote>
+                            For an API to be HATEOAS-compliant it requires a client app that is also HATEOAS-compliant...
+                        </blockquote>
+                        <small>Source : <a href="http://fr.slideshare.net/apigee/hateoas-101-opinionated-introduction-to-a-rest-api-style">slides Apigee</a></small>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Questions ?</h2>
+                </section>
+
+                <section>
+                    <h2>Quelques liens</h2>
+                    <ul>
+                        <li>
+                            <a href="http://martinfowler.com/articles/richardsonMaturityModel.html">
+                                Richardson Maturity Model
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://restcookbook.com/">
+                                The RESTful CookBook
+                            </a>
+                        </li>
+                    </ul>
+
+                    <p>&nbsp;</p>
+
+                    <h3>Exemples d'API</h3>
+                    <ul>
+                        <li>
+                            <a href="http://developer.netflix.com/">
+                                API Netflix
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://api.github.com/">
+                                API Github
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+
+            </div>
+
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.min.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                    // { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+                    // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
