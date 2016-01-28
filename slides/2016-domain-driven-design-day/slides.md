@@ -134,7 +134,7 @@ Essayez de garder vos formulaires les plus simples possibles :-)
 * On introduit de nouveaux **validation groups**<br>
   (Registration, Profile, ResetPassword, ChangePassword, etc.)
 * On ajoute un **DataTransformer** pour traiter un autocomplete
-* On se teste avec les **FormEvents** pour rajouter de nouveaux champs
+* On s'essaye aux **FormEvents** pour rajouter de nouveaux champs
 * On ajoute nombreux **getters et setters**<br>
   (même des setCreatedAt())
 
@@ -152,8 +152,7 @@ Il manque un groupe sur un @NotBlank() :-)
 
 ## Tout reprendre à zéro
 
-Est-ce que notre modèle a été réalisé pour ce(s) formulaire(s) ?<br>
-Et surtout est-ce que ce modèle a pour vocation d'être utilisé que par ce(s) formulaire(s) ?
+Est-ce que ce modèle a pour vocation de n'être utilisé que par ce(s) formulaire(s) ?
 
 ---
 
@@ -226,7 +225,7 @@ Et surtout est-ce que ce modèle a pour vocation d'être utilisé que par ce(s) 
 
 ### Un formulaire représente une action
 
-#### L'action est de s'incrire
+#### L'action est de s'inscrire
 
 ---
 
@@ -319,8 +318,7 @@ Et surtout est-ce que ce modèle a pour vocation d'être utilisé que par ce(s) 
 ### Inscription - Unicité de l'email
 
 * Vous penser à `@UniqueEntity("email")` ?
-* C'est retomber dans un couplage fort entre votre modèle et les formulaires 
-  et ses validations
+* C'est retomber dans un couplage fort entre votre modèle et les formulaires et ses validations
 * Le domaine métier peut se charger de cette validation
 
 ---
@@ -383,7 +381,7 @@ par [@mathiasverraes][mathiasverraes].
 
 ### Option `empty_data`
 
-* Cette option permet de définir la valeur à retourner lorsque la valeur soumisse est vide
+* Cette option permet de définir la valeur à retourner lorsque la valeur soumise est vide
 * Permet de construire un objet comme on le souhaite
 * Impossible d'éditer un objet
 
@@ -404,6 +402,10 @@ par [@damienalexandre][damienalexandre].
 
 [value-object-slides]: https://jolicode.github.io/value-object-conf/slides/index.html
 [damienalexandre]: https://twitter.com/damienalexandre
+
+---
+
+### Exemple avec `empty_data`
 
 ---
 
@@ -492,6 +494,10 @@ par [@damienalexandre][damienalexandre].
 Si vous basez la création de vos **Value Objects** via `empty_data` ou un 
 `DataMapper` gardez à l'esprit que cette création va se faire **avant l'exécution 
 des validations**.
+
+---
+
+### Exemple avec `DataMapperInterface`
 
 ---
 
@@ -610,14 +616,15 @@ des validations**.
 
 ### DTO / Command
 
-* 
+* Très pratique pour créer des commandes liées aux actions de votre application (Story Mapping)
+* 2 écoles : utilisation uniquement de type primitifs dans les commandes ou utilisation des Value Objects
 
 ---
 
 ### Mapping personnalisé
 
 * Très pratique pour les Values Objects
-* Attention à ne pas trop mélanger les validations Form et validation Value Object
+* Attention à ne pas trop mélanger les validations Form et validations Value Object
 
 ---
 
