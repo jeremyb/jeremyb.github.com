@@ -54,20 +54,20 @@ Essayez de garder vos formulaires les plus simples possibles :-)
          * @Email()
          */
         private $email;
-    
+
         /**
          * @NotBlank()
          */
         private $password;
-    
+
         /** @var \DateTimeImmutable */
         private $createdAt;
-    
+
         public function __construct()
         {
             $this->createdAt = new \DateTimeImmutable();
         }
-    
+
         // getters / setters
     }
 
@@ -83,7 +83,7 @@ Essayez de garder vos formulaires les plus simples possibles :-)
                 ->add('email', EmailType::class)
                 ->add('password', PasswordType::class);
         }
-    
+
         public function configureOptions(OptionsResolver $resolver)
         {
             $resolver->setDefaults([
@@ -173,32 +173,32 @@ Est-ce que ce modèle a pour vocation de n'être utilisé que par ce(s) formulai
 ---
 
 #### Penser le modèle en fonction du Ubiquitous Language
-    
+
     class User
     {
         /** @var string */
         private $email;
-    
+
         /** @var string */
         private $password;
-    
+
         /** @var \DateTimeImmutable */
         private $createdAt;
-    
+
         public static function register($email, $password)
         {
             $user = new self();
             $user->email = $email;
             $user->password = $password;
-    
+
             return $user;
         }
-    
+
         private function __construct()
         {
             $this->createdAt = new \DateTimeImmutable();
         }
-        
+
         // getters
     }
 
@@ -209,12 +209,12 @@ Est-ce que ce modèle a pour vocation de n'être utilisé que par ce(s) formulai
     class User
     {
         // ...
-    
+
         /** @var PersonalInformation */
         private $personalInformation;
-    
+
         // ...
-        
+
         public function complete(PersonalInformation $personalInformation)
         {
             $this->personalInformation = $personalInformation;
@@ -245,7 +245,7 @@ Est-ce que ce modèle a pour vocation de n'être utilisé que par ce(s) formulai
          * @Email()
          */
         public $email;
-    
+
         /**
          * @NotBlank()
          */
@@ -264,7 +264,7 @@ Est-ce que ce modèle a pour vocation de n'être utilisé que par ce(s) formulai
                 ->add('email', EmailType::class)
                 ->add('password', PasswordType::class);
         }
-    
+
         public function configureOptions(OptionsResolver $resolver)
         {
             $resolver->setDefaults([
@@ -343,7 +343,7 @@ par [@mathiasverraes][mathiasverraes].
             if (...) {
                 throw new EmailAlreadyExists();
             }
-        
+
             return User::register(
                 $command->email(),
                 $command->password()
@@ -425,7 +425,7 @@ par [@damienalexandre][damienalexandre].
                 },
             ]);
         }
-    
+
         public function buildForm(FormBuilderInterface $builder, array $options)
         {
             $builder
@@ -453,7 +453,7 @@ par [@damienalexandre][damienalexandre].
                 },
             ]);
         }
-    
+
         public function buildForm(FormBuilderInterface $builder, array $options)
         {
             $builder
@@ -491,8 +491,8 @@ par [@damienalexandre][damienalexandre].
 
 ### Attention aux validations
 
-Si vous basez la création de vos **Value Objects** via `empty_data` ou un 
-`DataMapper` gardez à l'esprit que cette création va se faire **avant l'exécution 
+Si vous basez la création de vos **Value Objects** via `empty_data` ou un
+`DataMapper` gardez à l'esprit que cette création va se faire **avant l'exécution
 des validations**.
 
 ---
@@ -507,19 +507,19 @@ des validations**.
     {
         const MIN_LENGTH = 5;
         const FORMAT = '/^[a-zA-Z0-9_]+$/';
-    
+
         /** @var string */
         private $username;
-    
+
         public function __construct($username)
         {
             Assert::notEmpty($username, 'The username should not be blank.');
             Assert::minLength($username, self::MIN_LENGTH, 'The username should contains at least %2$s characters.');
             Assert::regex($username, self::FORMAT, 'The username is invalid.');
-    
+
             $this->username = $username;
         }
-    
+
         public function getUsername()
         {
             return $this->username;
@@ -538,7 +538,7 @@ des validations**.
                 ->add('username', TextType::class)
                 ->setDataMapper($this);
         }
-        
+
         // ...
     }
 
@@ -549,16 +549,16 @@ des validations**.
     class UsernameType extends AbstractType implements DataMapperInterface
     {
         // ...
-    
+
         public function mapDataToForms($data, $forms)
         {
             $forms = iterator_to_array($forms);
-    
+
             $forms['username']->setData(
                 null !== $data ? $data->getUsername() : null
             );
         }
-    
+
         // ...
     }
 
@@ -569,11 +569,11 @@ des validations**.
     class UsernameType extends AbstractType implements DataMapperInterface
     {
         // ...
-    
+
         public function mapFormsToData($forms, &$data)
         {
             $forms = iterator_to_array($forms);
-    
+
             try {
                 $data = new Username($forms['username']->getData());
             } catch (\InvalidArgumentException $e) {
@@ -581,7 +581,7 @@ des validations**.
                 $forms['username']->addError($error);
             }
         }
-    
+
         // ...
     }
 
@@ -592,7 +592,7 @@ des validations**.
     class UsernameType extends AbstractType implements DataMapperInterface
     {
         // ...
-    
+
         public function configureOptions(OptionsResolver $resolver)
         {
             $resolver->setDefaults([
@@ -628,12 +628,14 @@ des validations**.
 
 ---
 
-Pour aller plus loin<br>
-[Symfony2 Forms: Do's and Don'ts][webmozart-symfony2-forms]<br>
-par [@webmozart][webmozart].
+Slides/post intéressants by [@webmozart][webmozart] :
 
-[webmozart-symfony2-forms]: https://speakerdeck.com/webmozart/symfony2-forms-dos-and-donts
+* [Symfony2 Forms: Do's and Don'ts][webmozart-symfony2-forms]
+* [Value Objects in Symfony forms][value-objects-in-symfony-forms]
+
 [webmozart]: https://twitter.com/webmozart
+[webmozart-symfony2-forms]: https://speakerdeck.com/webmozart/symfony2-forms-dos-and-donts
+[value-objects-in-symfony-forms]: https://webmozart.io/blog/2015/09/09/value-objects-in-symfony-forms/
 
 ---
 
