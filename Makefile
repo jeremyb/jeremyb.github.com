@@ -1,7 +1,7 @@
 build:
-	jekyll build --drafts
+	docker run --rm --label=jekyll --volume=$(shell pwd):/srv/jekyll -it -p 127.0.0.1:4000:4000 jekyll/builder:pages
 
 serve:
-	jekyll serve --safe --watch --force_polling --port 4000 --drafts
+	docker run --rm --label=jekyll --volume=$(shell pwd):/srv/jekyll -it -p 127.0.0.1:4000:4000 jekyll/jekyll:pages
 
 .PHONY: build serve
