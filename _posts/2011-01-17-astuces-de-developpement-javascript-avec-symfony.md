@@ -88,7 +88,7 @@ Cela fait déjà quelques temps que chez Lexik nous avons fait le choix d'enleve
 
 Presque aussi important que la compression, la configuration d'apache pour mettre en cache certains de vos fichiers statiques. Typiquement, maintenant que vos fichiers javascripts et CSS sont compressés en 1 seul et possèdent un timestamp unique par version, il serait dommage de les recharger à chaque chargement de page... Vous devez donc configurer le module Expires d'apache via le fichier de config du vhost ou via le .htaccess, en voici un exemple :
 
-{% highlight apache %}
+{% highlight conf %}
 <IfModule mod_expires.c>
   ExpiresActive on
   ExpiresByType text/css "access plus 1 year"
