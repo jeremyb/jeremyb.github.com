@@ -1,4 +1,5 @@
-## Command Bus
+## Pourquoi le Command Bus a changé ma façon de développer
+## Command in a bottle
 
 #### Meetup After Work DDD - Mai 2016
 
@@ -70,7 +71,7 @@
 * Toujours trop de couplage
   * avec la request HTTP (Forms)
   * avec la persistence (ORM / Database)
-  * avec le modèle
+  * avec le framework globalement
 
 ---
 
@@ -148,8 +149,8 @@
 ### Handler
 
 * Implémentation liée à la Command / à l'action
-* Le traitement de la commande ne peut rien retourner
 * Une action représente une écriture
+* Le traitement de la commande ne peut rien retourner
 
 ---
 
@@ -207,6 +208,7 @@
 * [Responsibilities of the command bus](http://php-and-symfony.matthiasnoback.nl/2015/01/responsibilities-of-the-command-bus/)
 * [Some questions about the command bus](http://php-and-symfony.matthiasnoback.nl/2015/01/some-questions-about-the-command-bus/)
 * [Command Buses Demystified: A Look at the Tactician Package](http://www.sitepoint.com/command-buses-demystified-a-look-at-the-tactician-package/)
+* [Towards CQRS, Command Bus](https://gnugat.github.io/2016/05/11/towards-cqrs-command-bus.html)
 
 ---
 
@@ -293,6 +295,78 @@
   * ex : Registration (= Command)
 
 ![Exemple d'Event Storming](images/eventstorming.jpg)
+
+---
+
+## Tips autour du Command Bus
+
+---
+
+### Tips #1: Validation
+
+* Valider les données de la Command :
+  * Symfony Validator `@Assert` peut faire le boulot
+  * Ou imposer les données dans le constructor de la Command
+
+---
+
+### Tips #1: Validation
+
+**Identifier le type de validation :**
+
+* Validation au niveau de l'UI (formulaires, aide de l'utilisateur)
+* Validation de la Command (doit représenter une demande d'action valide)
+* Validation de la cohérence du modèle / domaine (toujours valide / business rules)
+
+Le DDD permet de répartir intelligemment les validations (Value Objects, Model, Specifications, etc.)
+
+---
+
+### Tips #1: Validation
+
+Aller plus loin :<br>
+[Form, Command, and Model Validation](http://verraes.net/2015/02/form-command-model-validation/)
+
+---
+
+### Tips #2: ID
+
+* Fini les `auto_increment` ! C'est dépendre de l'infrastructure (database)
+* En DDD l'identifiant fait parti du domaine
+* Privilégier l'utilisation de Universal Unique IDentifier (UUID)
+
+[Doctrine 2.5, DDD, Entities and Identities](https://carlosbuenosvinos.com/doctrine-25-ddd-entities-and-identities/)
+
+---
+
+### Tips #3: Command & Value Object
+
+* Il est recommandé d'utiliser des types primitifs si la Command doit être
+  traitée en asynchrone (à cause de la serialization)
+* Passer des Values Objects à une Command permet de réutiliser un cadre et les
+  validations définies
+
+---
+
+### Tips #3: Command & Value Object
+
+Exemple récent :
+
+    final class CreateSubscription
+    {
+        /** @var Plan */
+        private $plan;
+        /** @var int */
+        private $limitOfMembers;
+        /** @var Gateway */
+        private $gateway;
+        /** @var BillingFrequency */
+        private $frequency;
+        /** @var CustomerInformation */
+        private $customer;
+        /** @var BillingAddress */
+        private $address;
+    }
 
 ---
 
