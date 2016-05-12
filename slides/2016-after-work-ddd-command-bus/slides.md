@@ -1,10 +1,14 @@
-## Pourquoi le Command Bus a changé ma façon de développer
-## Command in a bottle
+## Command (Bus) and Conquer (Domain)
 
-#### Meetup After Work DDD - Mai 2016
+<!-- .element: class="small" -->
+**Merci Brice pour le titre ;-)**
+
+<br>
 
 <!-- .element: class="right" -->
 ![talkspirit](images/talkspirit-logo.png)
+
+#### Meetup After Work DDD - Mai 2016
 
 #### [Jeremy Barthe][site]
 
