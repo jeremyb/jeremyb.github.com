@@ -1,7 +1,7 @@
 ## Command (Bus) and Conquer (Domain)
 
 <!-- .element: class="small" -->
-**Merci Brice pour le titre ;-)**
+**Merci [Brice](https://twitter.com/briceatwork) pour le titre ;-)**
 
 <br>
 
