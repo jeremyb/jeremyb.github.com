@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>
+            Slides Ne laissez pas les formulaires Symfony influencer votre modèle
+            -
+            Meetup Symfony Montpellier
+            -
+            Octobre 2016
+        </title>
+        <meta name="description" content="">
+        <meta name="author" content="Jeremy Barthe">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/reveal.js/3.0.0/css/reveal.min.css">
+        <link rel="stylesheet" href="css/theme.css">
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow.min.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi )
+                ? '//cdnjs.cloudflare.com/ajax/libs/reveal.js/3.0.0/plugin/print-pdf/print-pdf.min.js' 
+                : '//cdnjs.cloudflare.com/ajax/libs/reveal.js/3.0.0/css/print/paper.min.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+            <div class="slides">
+                <section data-markdown="slides.md" data-separator="^\n---\n\n" data-vertical="^\n--\n\n" data-notes="^Note:"></section>
+            </div>
+        </div>
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/reveal.js/3.0.0/lib/js/head.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/reveal.js/3.0.0/js/reveal.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+
+        <script>
+            Reveal.initialize({
+                controls: false,
+                progress: true,
+                history: true,
+                center: true,
+                backgroundTransition: 'none',
+                transition: 'linear',
+
+                dependencies: [
+                    {
+                        src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.0.0/plugin/markdown/marked.min.js',
+                        condition: function() { return !!document.querySelector( '[data-markdown]' ); }
+                    },
+                    {
+                        src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.0.0/plugin/markdown/markdown.min.js',
+                        condition: function() { return !!document.querySelector( '[data-markdown]' ); }
+                    }
+                ]
+            });
+        </script>
+
+    </body>
+</html>
