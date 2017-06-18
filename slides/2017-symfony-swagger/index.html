@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Présentation de Swagger</title>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+        @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+        @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+        body {
+            font: 700 50px/1 PT Sans Narrow, sans-serif;
+        }
+        .remark-slide-content h1 { font-size: 70px; }
+        h1, h2, h3 {
+            font-family: PT Sans Narrow, sans-serif;
+            font-weight: bold;
+        }
+
+        .remark-code, .remark-inline-code {
+            font-family: 'Ubuntu Mono';
+        }
+
+        .cover {
+            background-image: url(./images/cover.jpg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        .white, .white a { color: #FFF; }
+
+        /* Two-column layout */
+        .left-column {
+            color: #777;
+            width: 20%;
+            height: 92%;
+            float: left;
+        }
+        .left-column h2:last-of-type, .left-column h3:last-child {
+            color: #000;
+        }
+        .right-column {
+            width: 75%;
+            float: right;
+            padding-top: 1em;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+</script>
+<script>
+    /**
+     * Returns an img tag using the parameter as either percentage or exact value
+     *
+     * @param {int} scale - value of scale
+     * @object {this} content - path to image.
+     */
+    remark.macros.image = function (xscale, yscale) {
+        var url = this;
+        var img = document.createElement('img');
+        img.src = url;
+
+        if (xscale != undefined && xscale != "")
+            img.style.width = xscale;
+
+        if (yscale != undefined && yscale != "")
+            img.style.height = yscale;
+
+        return img.outerHTML;
+    };
+
+    var slideshow = remark.create({
+        sourceUrl: 'slides.md',
+
+        // Default: '4:3' / Alternatives: '16:9'
+        ratio: '4:3',
+
+        // Navigation options
+        navigation: {
+            scroll: false,
+            touch: true,
+            click: false
+        },
+
+        // Enable or disable counting of incremental slides in the slide counting
+        countIncrementalSlides: false,
+
+        highlightStyle: 'github'
+    });
+</script>
+</body>
+</html>
