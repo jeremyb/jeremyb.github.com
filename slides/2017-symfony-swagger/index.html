@@ -3,24 +3,49 @@
 <head>
     <meta charset="utf-8">
     <title>Présentation de Swagger</title>
-    <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
     <style>
-        @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
-        @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
-        @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+        @import url('https://fonts.googleapis.com/css?family=PT+Sans|PT+Sans+Narrow|Ubuntu+Mono');
 
         body {
-            font: 700 50px/1 PT Sans Narrow, sans-serif;
+            font: 700 50px/1 'PT Sans', sans-serif;
         }
-        .remark-slide-content h1 { font-size: 70px; }
-        h1, h2, h3 {
-            font-family: PT Sans Narrow, sans-serif;
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'PT Sans Narrow', sans-serif;
             font-weight: bold;
+        }
+
+        a { color: #29447C; }
+
+        blockquote {
+            color: #666;
+            font-style: italic;
+            padding-left: 1em;
+            border-left: 1px solid #777872;
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        ul { text-align: left !important; }
+        ul li { padding-bottom: 10px; }
+
+        table { font-size: 20px; font-weight: normal !important; border-collapse: collapse; }
+        table th, table td {
+            text-align: left;
+            border-bottom: 1px solid #777;
+            padding: 0.5em;
         }
 
         .remark-code, .remark-inline-code {
             font-family: 'Ubuntu Mono';
         }
+
+        .remark-slide-content h1 { font-size: 70px; }
+        .remark-slide-content {
+            font-size: 25px;
+        }
+
+        .hljs-github .hljs { padding: 1em; }
 
         .cover {
             background-image: url(./images/cover.jpg);
@@ -30,25 +55,40 @@
         }
         .white, .white a { color: #FFF; }
 
-        /* Two-column layout */
-        .left-column {
-            color: #777;
-            width: 20%;
-            height: 92%;
-            float: left;
+        .profile {
+            padding-left: 225px;
         }
-        .left-column h2:last-of-type, .left-column h3:last-child {
-            color: #000;
+        .profile img {
+            position: absolute;
+            top: 135px;
+            left: 100px;
+            width: 100px;
+            height: 100px;
+            -webkit-border-radius: 50%;
+            border-radius: 50%;
         }
-        .right-column {
-            width: 75%;
-            float: right;
-            padding-top: 1em;
+
+        .troll-face:after {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 200px;
+            bottom: 5%;
+            right: 3%;
+            z-index: 1;
+            background-image: url(./images/troll-face.png);
+            background-repeat: no-repeat;
+            background-size: 250px;
+            -webkit-transform: rotate(-30deg);
+            -moz-transform: rotate(-30deg);
+            -ms-transform: rotate(-30deg);
+            -o-transform: rotate(-30deg);
+            transform: rotate(-30deg);
         }
     </style>
 </head>
 <body>
-    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    <script src="./remark.min.js">
 </script>
 <script>
     /**

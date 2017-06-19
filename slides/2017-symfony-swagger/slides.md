@@ -1,42 +1,39 @@
 class: cover, center, bottom, white
 
 # Présentation de Swagger
-## Et de l'approche API First
 ### Et comment l'utiliser dans Symfony (ou autre)
 #### Meetup Symfony Montpellier (juin 2017)
 
 <a href="http://jeremybarthe.com/" target="_blank">Jérémy Barthe</a>
 
 ???
-Cette photo illustre la rencontre entre une API et un client :)<br>
-Qui développe des API ?<br>
-Qui consome des API ?<br>
-Qui code en Symfony ?<br>
-Qui connait Swagger ?<br>
+* Cette photo illustre la rencontre entre une API et un client :)
+* Qui développe des API ?
+* Qui consomme des API ?
+* Qui code en Symfony ?
+* Qui connait Swagger ?
 
 ---
 
-class: center, middle
+class: profile, middle
 
 # Jérémy Barthe
 
-twitter.com/jeremyb_
-twitter.com/afup_mtp
-github.com/jeremyb
+![Avatar](./images/avatar.jpeg)
 
-### TechMeetups.fr
+* [@jeremyb_](https://twitter.com/jeremyb_)
+* [github.com/jeremyb](https://github.com/jeremyb)
+* [@Afup_Mtp](https://twitter.com/Afup_Mtp)
+* [holaspirit.com](https://www.holaspirit.com/)
 
-[site]: http://jeremybarthe.com/
-[talkspirit]: https://www.talkspirit.com/
-
-@TODO: A designer
+### [TechMeetups.fr](http://techmeetups.fr/)
+### [Slack comm-montpellier](https://comm-montpellier-invit.herokuapp.com/)
 
 ???
-Symfony depuis 2009 / API depuis 2013<br>
-Like approche framework agnostic / DDD<br>
-talkSpirit / holaSpirit<br>
-AFUP et membre de la team AFUP Mtp<br>
-TechMeetups.fr + Communautés Mtp
+* Développement Symfony + API REST depuis environ 3 ans
+* holaSpirit : nouveaux modes de gouvernance
+* Adhérent AFUP et membre de la team AFUP Mtp
+* TechMeetups.fr + Slack Communautés Mtp (Venez !)
 
 ---
 
@@ -44,33 +41,42 @@ class: center middle
 
 # Let's Start a New API REST Project!
 
+???
+* C'est parti pour le développement d'un nouveau projet !
+* L'euphorie du début de projet
+
 ---
 
 class: center middle
 ![Mon API REST c'est la meilleure !](./images/proud.jpg)
 
 ???
-L'euphorie du début de projet<br>
-Le code "a l'air" propre<br>
-Recpect d'un standard<br>
+* Le code "a l'air" propre
+* Bien designé ses ressources
+* Respect d'un standard (HAL, JSON-API, JSON-LD)
+* Peut-etre meme HATEOAS ? 
 
 ---
 
-class: center middle
+class: center middle troll-face
 
 ![J'ai installé plein de bundles](./images/bundles.jpg)
 
-http://media.topito.com/wp-content/uploads/2012/01/troll-face1.png
-
-@TODO: ajouter Troll face
-
 ???
-Troll<br>
+* FOSRestBundle
+* JMS Serializer
+* NelmioApiDocBundle
+* HateoasBundle
+* RestExtraBundle
+* Troll
 
 ---
 
 class: center middle
 # Et puis...
+
+???
+* Cycle de vie classique d'un projet...
 
 ---
 
@@ -78,8 +84,8 @@ class: center middle
 ![Rajoutes moi ce champ sur l'API stp !](./images/yolo1.jpg)
 
 ???
-Evolution de l'API :<br>
-C'est l'histoire d'un nouveau champ dans une resource de l'API qui est dispo à un endroit et pas à un autre
+* Evolution de l'API
+* C'est l'histoire d'un nouveau champ dans une resource de l'API qui est dispo à un endroit et pas à un autre
 
 ---
 
@@ -87,7 +93,7 @@ class: center middle
 ![La doc de l'API n'est pas à jour...](./images/yolo2.jpg)
 
 ???
-Si c'est pas, quelle doc ?
+* Si c'est pas, quelle doc ?
 
 ---
 
@@ -95,27 +101,22 @@ class: center middle
 ![Pourquoi camelCase et snake_case sur l'API](./images/inconsistency.jpg)
 
 ???
-Problème de consistances<br>
-Le standard n'est plus suivi<br>
+* Problème de consistances
+* Pas les mêmes format I/O
+* Le standard n'est plus suivi
 
 ---
 
 class: center middle
 
-# API first
-## Design-first API development
+# Design-first API development
 ### Documentation Driven Development
 
-@TODO: lire : https://dzone.com/articles/design-first-or-code-first-whats-the-best-approach
-
 ???
-Réfléchir à la spec de l'API avant de coder<br>
-Définir un contrat d'API avant de coder<br>
-Penser l'API comme si on allait la consommer<br>
-Quelle requete HTTP pour quel résultat ?<br>
-Quel status code est le plus adapté ?<br>
-Permet de penser langage et framework agnostic<br>
-Proche du TDD<br>
+* Réfléchir à la spec avant de coder / TDD ?
+* Penser l'API comme si on allait la consommer
+* Quelle requete HTTP / status code pour quel résultat ?
+* Langage & framework agnostic
 
 ---
 
@@ -128,27 +129,35 @@ class: middle
 * [RAML](http://raml.org/)
 * [WSDL / WADSL](https://www.w3.org/TR/wsdl)
 
-@TODO: lire : https://fr.slideshare.net/SmartBear_Software/api-strat-2014metadataformatsshort
+???
+* Swagger : JSON ou YAML
+* API Blueprint : Markdown
+* RAML : YAML
+* WSDL / WADSL : XML
 
 ---
 
 class: middle
 
-# Swagger / OpenAPI Specification
+# Swagger / OpenAPI
 
 * Technologie agnostique de description d'API REST
-* JSON ou YAML
+* Format JSON ou YAML
 * Open Source
-* Version stable en cours Swagger 2.0 specification
-* OpenAPI specification v3.0 en cours
+* Version en cours Swagger 2.0 specification
+* Future : OpenAPI specification v3.0
 
-@TODO: autre chose ?
+???
+* Agnostique (vous pouvez le placer en dehors de votre code)
+* Fichier JSON ou YAML (plus facile à éditer)
+* Open Source
+* Grosse adoption, beaucoup de tools, communauté active
 
 ---
 
-class: center middle
+class: middle
 
-# Swagger / OpenAPI Specification
+# Swagger / OpenAPI
 
 > On Nov. 5, 2015, SmartBear in conjunction with 3Scale, Apigee, Capital One, 
 > Google, IBM, Intuit, Microsoft, PayPal, and Restlet announced the formation of 
@@ -160,99 +169,50 @@ class: center middle
 > 2.0 specification.
 
 ???
-Quelques petites entreprises sont à l'origine de l'OpenAPI Specification<br><br>
-OpenAPI specification 2.0 === Swagger 2.0 specification<br>
+* Quelques petites entreprises sont à l'origine de l'OpenAPI Specification
+* Standard et largement adopté
+* OpenAPI 2.0 === Swagger 2.0
 
 ---
 
-class: middle
-
-# Ecosystème Swagger
-
-* [Swagger.io](http://swagger.io/)
-* Swagger UI (API console)
-* Swagger Editor
-* Swagger Codegen (générateur de code serveur et client)
-
-???
-Tout est disponible sur Github et Open Source<br>
-
----
-
-class: middle
-## Swagger UI
-![:image 100%](./images/swagger-ui.png)
-
-???
-Documentation & console de test<br>
-Pensez à activer CORS sur votre API (appel coté client => Cross-Origin Request)
-
----
-
-class: middle
-## Swagger Editor
-![:image 100%](./images/swagger-editor.png)
-
----
-
-class: middle
-
-## Swagger codegen
-
-* Développé en Java
-* Simplifie la génération de server stubs et de client SDKs à partir d'un schéma Swagger
-
-```bash
-$ wget http://central.maven.org/maven2/io/swagger/swagger-codegen-cli/2.2.2/swagger-codegen-cli-2.2.2.jar -O swagger-codegen-cli.jar
-
-$ java -jar swagger-codegen-cli.jar help
-
-# Generate mock server in Silex
-$ java -jar swagger-codegen-cli.jar generate \
-   -i http://petstore.swagger.io/v2/swagger.json \
-   -l silex-PHP \
-   -o tmp/silex
-
-# Generate SDK client   
-$ java -jar swagger-codegen-cli.jar generate \   
-   -i http://petstore.swagger.io/v2/swagger.json \
-   -l typescript-angular2 \
-   -o tmp/angular2
-```
-
----
-
-class: middle
-
-# Ecosystème Swagger
-
-* https://github.com/swagger-api/swagger-js SDK client
-* https://github.com/swagger-api/validator-badge Swagger validator
-* https://rebilly.github.io/ReDoc/ API Reference Documentation
-* https://github.com/janephp/openapi
-* Import dans Postman
-
-@TODO: compléter cette slide
-
----
-
-class: middle
-
+class: center middle
 # Swagger 2.0 specification
 
-* General information about the API
+???
+* La spec maintenant !
+
+---
+
+class: center middle
+
+## Swagger 2.0 specification
+
+![:image 300px](./images/swagger-spec.png)
+
+La spec complète : http://swagger.io/specification/
+
+???
 * API resources (e.g. paths)
 * HTTP methods
 * Input (body, headers, path, query params)
 * Output (body, headers)
-* Schema (object definition / validation)
-* Security (HTTP basic, API Keys, OAuth, JWT, etc.)
-
-http://swagger.io/specification/
-
-https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md
+* Definitions : Schema Object = validation
+* Security
 
 ---
+
+class: center middle
+
+![:image 100%](./images/swagger-explained.png)
+
+https://bfanger.nl/swagger-explained/
+
+???
+* Documentation didactique
+
+---
+
+class: middle
 
 ## Décrire une API avec Swagger
 
@@ -282,74 +242,24 @@ paths:
 
 ---
 
-## Structure du schéma Swagger
-
-Field Name | Type | Description
----|:---:|---
-swagger | `string` | **Required.** The value MUST be `"2.0"`.
-info | `Info Object` | **Required.** Provides metadata about the API
-host | `string` | The host (name or ip) serving the API.
-basePath | `string` | The base path on which the API is served. 
-schemes | [`string`] | The transfer protocol of the API.
-consumes | [`string`] | A list of MIME types the APIs can consume.
-produces | [`string`] | A list of MIME types the APIs can produce.
-paths | `Paths Object` | **Required.** The available paths and operations for the API.
-definitions | `Definitions Object` | An object to hold data types produced and consumed by operations.
-securityDefinitions | `Security Definitions Object` | Security scheme definitions that can be used across the specification.
-security | `Security Requirement Object` | A declaration of which security schemes are applied for the API as a whole.
-
----
-
-## Data types
-
-Common Name | `type` | `format` | Comments
------------ | ------ | -------- | --------
-integer | `integer` | `int32` | signed 32 bits
-long | `integer` | `int64` | signed 64 bits
-float | `number` | `float` | |
-double | `number` | `double` | |
-string | `string` | | |
-byte | `string` | `byte` | base64 encoded characters
-binary | `string` | `binary` | any sequence of octets
-boolean | `boolean` | | |
-date | `string` | `date` | As defined by `full-date` - RFC3339
-dateTime | `string` | `date-time` | As defined by `date-time` - RFC3339
-password | `string` | `password` | Used to hint UIs the input needs to be obscured.
-
----
-
 class: center middle
 
-![:image 100%](./images/swagger-explained.png)
+# Schema Object / JSON Schema
 
-https://bfanger.nl/swagger-explained/
+> The Schema Object allows the definition of input and output data types. (...)
+> This object is based on the JSON Schema Specification Draft 4 and uses a predefined subset of it.
 
-???
-Documentation didactique
+[Spécification des Schema Object](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#schemaObject)
 
----
+> JSON schema defines a JSON based format for defining the structure of JSON data.
 
-# JSON Schema
-
-* Les definitions dans Swagger représentent une collection de Schema Object qui sont des JSON Schema
-
-Primitive data types in the Swagger Specification are based on the types supported by the JSON-Schema Draft 4. Models are described using the Schema Object which is a subset of JSON Schema Draft 4.
-
-> JSON Schema is a vocabulary that allows you to annotate and validate JSON documents.
-
-JSON Schema Specification Draft 4
-
-https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#schemaObject
-
-http://json-schema.org/
-
-@TODO: slide avec https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#schemaObject ?
+Source : http://json-schema.org/
 
 ???
-Validation de structure de données JSON<br>
-On va pouvoir utiliser ces validations dans le code du projet<br>
-Ca rend d'autant plus intéressant le fait de commencer par les specs<br>
-A savoir : quelques différences entre la spec JSON Schema et les definitions Swagger<br>
+* Validation de structure de données JSON
+* Utilisation des validations dans le code
+* Intéret de commencer par les specs !
+* A savoir : quelques différences JSON Schema et Schema Object
 
 ---
 
@@ -380,10 +290,10 @@ paths:
             $ref: "#/definitions/Pet"
 ```
 
-Source : https://github.com/OAI/OpenAPI-Specification/blob/master/examples/v2.0/yaml/petstore-simple.yaml
+Source : [petstore-simple.yaml](https://github.com/OAI/OpenAPI-Specification/blob/master/examples/v2.0/yaml/petstore-simple.yaml)
 
 ???
-Les JSON Schema sont dans un noeud definitions
+* Les JSON Schema sont dans un noeud definitions
 
 ---
 
@@ -391,16 +301,67 @@ class: middle
 ## Exemple de JSON Schema
 
 ```yaml
-NewPet: 
-  type: "object"
-  required: 
-    - "name"
-  properties: 
-    name: 
-      type: "string"
-    tag: 
-      type: "string"
+definitions:
+  NewPet: 
+    type: "object"
+    required: 
+      - "name"
+    properties: 
+      name: 
+        type: "string"
+      tag: 
+        type: "string"
 ```
+
+---
+
+class: middle
+## Exemple de JSON Schema
+
+```yaml
+definitions:
+  User:
+    type: object
+    additionalProperties: false
+    description: User
+    required:
+      - name
+    properties:
+      name:
+        type: string
+      address:
+        type: array
+        items:
+          "$ref": "#/definitions/Address"
+  Address:
+    type: object
+    additionalProperties: false
+    description: Address
+    properties:
+      type:
+        type: string
+        enum:
+          - home
+          - office
+      line1:
+        type: string
+```
+
+---
+
+## Data types
+
+* integer : `integer` (32 bits)
+* long : `integer` (64 bits)
+* float : `number`
+* double : `number`
+* string : `string`
+* byte : `string` (base64 encoded)
+* binary : `string` (any sequence of octets)
+* boolean : `boolean`
+* date : `string` (RFC3339: `Y-m-d`)
+* dateTime : `string` (RFC3339: `Y-m-d\TH:i:sP`)
+* password : `string` (uniquement pour l'UI)
 
 ---
 
@@ -471,6 +432,11 @@ var_dump($jsonValidator->getErrors());
 // ]
 ```
 
+???
+* C'est cool d'avoir une erreur aussi détaillée
+* Prête à être exposée au client
+* Rappel pour ceux qui ont fait des API Rest avec les Symfony Forms
+
 ---
 
 class: center middle
@@ -490,40 +456,19 @@ class: center middle
 
 ---
 
-Référencer les bundles Symfony (et leur défauts ?)
-
-* SwaggerBundle
-* rezza
-
-@TODO: lister les bundles
-
-???
-Pas de bundle mais c'est très facile d'arriver au résultat<br>
-
----
-
 class: middle
-## Avec Symfony
 
-A Symfony event listener for decoding JSON encoded request content.
+# Les bundles / libs
 
-```bash
-$ composer require qandidate/symfony-json-request-transformer
-```
-
-```yaml
-# app/config/services.yml
-Qandidate\Common\Symfony\HttpKernel\EventListener\JsonRequestTransformerListener:
-    tags:
-        - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 100 }
-```
-
-Juste 1 classe ! :)
+* [Nicofuma/SwaggerBundle](https://github.com/Nicofuma/SwaggerBundle)
+* [zircote/swagger-php](https://github.com/zircote/swagger-php)
+* [symfony-json-rest-api](https://github.com/rezzza/symfony-json-rest-api)
+* etc. ?
 
 ???
-Lib très simple (seulement 1 classe) vous pouvez la ré-implémenter si vous le souhaitez<br>
-Transforme la Request Symfony à partir d'une requete avec Content-type: application/json<br>
-Pour ne pas utiliser FOSRestBundle juste pour faire cette transformation<br>
+* SwaggerBundle: dépend de PHPUnit (34 nouvelles deps)
+* swagger-php: annotations dans le code... on perd le Design-first
+* symfony-json-rest-api: super lib mais pas facilement utilisable avec Swagger
 
 ---
 
@@ -573,7 +518,7 @@ public function __invoke() : Response
 ```
 
 ???
-Une action pour exposer la spécification Swagger en JSON<br>
+* Une action pour exposer la spécification Swagger en JSON
 
 ---
 
@@ -604,6 +549,9 @@ final class JsonValidatorFactory
         arguments: ['%swagger_spec%']
         public: true
 ```
+
+???
+* Service version Symfony 3.3 (attention au public)
 
 ---
 
@@ -639,8 +587,28 @@ final class PetsController extends Controller
 }
 ```
 
+---
+
+class: middle
+## Avec Symfony : requête JSON
+
+Un listener sur le Kernel pour décoder le contenu JSON d'une requête HTTP.
+
+```bash
+$ composer require qandidate/symfony-json-request-transformer
+```
+
+```yaml
+# app/config/services.yml
+Qandidate\Common\Symfony\HttpKernel\EventListener\JsonRequestTransformerListener:
+    tags:
+        - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 100 }
+```
+
 ???
-@TODO: changer check() par validate() ?
+* Seulement 1 classe !
+* Transforme la Request Symfony (Content-type: application/json)
+* Pour ne pas utiliser FOSRestBundle juste pour faire cette transformation
 
 ---
 
@@ -677,12 +645,15 @@ Content-Type: application/json
 ```
 
 ???
-https://httpie.org/ c'est bien pratique<br>
+* https://httpie.org/ c'est bien pratique
 
 ---
 
 class: center middle
 ![No test, no beer](./images/tests.jpg)
+
+???
+* Anecdote : avec JMS Serializer object JSON transformé en array...
 
 ---
 
@@ -717,9 +688,6 @@ class PetsControllerTest extends WebTestCase
     }
 }
 ```
-
-???
-Anecdote : avec JMS Serializer object JSON transformé en array...
 
 ---
 
@@ -757,6 +725,102 @@ Ce test plante car je n'ai pas suivi la définition ErrorModel :)
 
 ---
 
+class: center middle
+# Last but not least
+### Communauté / Ecosystème
+
+---
+
+class: middle
+
+# Ecosystème Swagger
+
+* Swagger UI (API console)
+* Swagger Editor
+* Swagger Codegen (générateur de code serveur et client)
+
+???
+* Swagger UI : API console
+* Swagger Codegen : générateur de code serveur et client
+* Tout est disponible sur Github et Open Source
+
+---
+
+class: middle
+## Swagger UI
+![:image 100%](./images/swagger-ui.png)
+
+???
+* Documentation & console de test
+* Pensez à activer CORS sur votre API (Cross-Origin Request)
+
+---
+
+class: middle
+## Swagger Editor
+![:image 100%](./images/swagger-editor.png)
+
+---
+
+class: middle
+
+## Swagger codegen
+
+* Développé en Java
+* Simplifie la génération de server stubs et de client SDKs à partir d'un schéma Swagger
+
+```bash
+$ wget http://central.maven.org/maven2/io/swagger/swagger-codegen-cli/2.2.2/swagger-codegen-cli-2.2.2.jar -O swagger-codegen-cli.jar
+
+$ java -jar swagger-codegen-cli.jar help
+
+# Generate mock server in Silex
+$ java -jar swagger-codegen-cli.jar generate \
+   -i http://petstore.swagger.io/v2/swagger.json \
+   -l silex-PHP \
+   -o tmp/silex
+
+# Generate SDK client
+$ java -jar swagger-codegen-cli.jar generate \
+   -i http://petstore.swagger.io/v2/swagger.json \
+   -l typescript-angular2 \
+   -o tmp/angular2
+```
+
+---
+
+class: middle
+
+# Ecosystème Swagger
+
+Libs :
+
+* [swagger-api/swagger-js](https://github.com/swagger-api/swagger-js)
+* [swagger-api/validator-badge](https://github.com/swagger-api/validator-badge)
+* [janephp/openapi](https://github.com/janephp/openapi)
+* Import de la spécification Swagger dans Postman !
+
+???
+* swagger-js : Javascript client HTTP
+* validator-badge : Validation du fichier Swagger JSON/YAML
+* Jane Open Api : PHP Client API (PSR7 compatible) (exemple de docker-php basé sur Swagger)
+
+---
+
+class: middle
+
+# Ecosystème Swagger
+
+Génération de documentation HTML
+
+* [ReDoc](https://github.com/Rebilly/ReDoc)
+* [Spectacle](https://sourcey.com/spectacle/)
+
+Et bien d'autres outils et intégrations :<br>
+http://swagger.io/open-source-integrations/
+
+---
+
 class: middle
 # REX sur un projet en cours
 
@@ -764,16 +828,30 @@ class: middle
 * `justinrainbow/json-schema`
 * NelmioCorsBundle
 
-<dl>
-  <dt><code>JsonBodyListener</code></dt>
-  <dd>traiter les requêtes en JSON et valider avec les JSON Schema (exception <code>InvalidPayload</code>)</dd>
-  <dt><code>JsonExceptionListener</code></dt>
-  <dd>pour convertir des exceptions en JSON</dd>
-  <dt>Config <code>twig.exception_controller</code></dt>
-  <dd>pour convertir les erreurs Symfony en JSON</dd>
-  <dt><code>ApiTestCase</code></dt>
-  <dd>pour les test fonctionnels (exemple de méthode <code>validateResponse</code>)</dd>
-</dl>
+
+* <code>JsonBodyListener</code>
+* <code>JsonExceptionListener</code>
+* Config <code>twig.exception_controller</code>
+* <code>ApiTestCase</code>
+
+???
+* JsonBodyListener: requêtes en JSON + JSON Schema
+* JsonExceptionListener : convertir des exceptions en JSON
+* twig.exception_controller : pour convertir les erreurs Symfony en JSON
+* ApiTestCase : tests fonctionnels (ex : <code>validateResponse</code>)
+
+---
+
+class: center middle
+
+# Défauts ?
+### Ou plutôt à savoir
+
+* Validation limitée au JSON Schema
+* Ecosystème Symfony
+
+???
+* Exemple inscription (email unique ou champ dépendant)
 
 ---
 
@@ -789,13 +867,9 @@ class: center middle
 
 ---
 
-Tutorial 
+class: center middle
+## Aller plus loin
 
-https://apihandyman.io/writing-openapi-swagger-specification-tutorial-part-1-introduction/
-
-http://idratherbewriting.com/learnapidoc/pubapis_swagger_intro.html
-http://idratherbewriting.com/learnapidoc/pubapis_swagger.html
-
-https://blog.runscope.com/posts/openapi-swagger-resource-list-for-api-developers?format=amp
-
-@TODO: lire : http://nordicapis.com/difference-api-documentation-specification-definition/
+* https://apihandyman.io/writing-openapi-swagger-specification-tutorial-part-1-introduction/
+* http://idratherbewriting.com/learnapidoc/pubapis_swagger_intro.html
+* https://blog.runscope.com/posts/openapi-swagger-resource-list-for-api-developers?format=amp
