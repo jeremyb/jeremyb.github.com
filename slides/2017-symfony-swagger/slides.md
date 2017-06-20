@@ -2,9 +2,13 @@ class: cover, center, bottom, white
 
 # Présentation de Swagger
 ### Et comment l'utiliser dans Symfony (ou autre)
-#### Meetup Symfony Montpellier (juin 2017)
 
-<a href="http://jeremybarthe.com/" target="_blank">Jérémy Barthe</a>
+<h5>
+    Meetup Symfony Montpellier (juin 2017)<br>
+    <small>[p] speaker notes</small>
+</h5>
+
+[Jérémy Barthe](http://jeremybarthe.com/)
 
 ???
 * Cette photo illustre la rencontre entre une API et un client :)
@@ -859,11 +863,9 @@ class: center middle
 # Merci !
 ## Questions ?
 
-[jeremybarthe.com][site] - [Twitter][twitter] - [Github][github]
+[@jeremyb_](https://twitter.com/jeremyb_)
 
-[site]: http://jeremybarthe.com/
-[twitter]: https://twitter.com/jeremyb_
-[github]: https://github.com/jeremyb
+Slides : https://goo.gl/E23VR2
 
 ---
 
